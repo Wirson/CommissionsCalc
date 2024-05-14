@@ -1,0 +1,3 @@
+- install app by running `composer install`
+- place source file in the app root folder 
+- to run calculations command, use `php bin/console app:calculate ${input_filename}`
