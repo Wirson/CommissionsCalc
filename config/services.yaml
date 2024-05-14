@@ -3,9 +3,21 @@ services:
     autowire: true
     autoconfigure: true
 
+  App\Model\CurrencyRateService:
+    arguments:
+      $exchangeRates: \App\Model\RateProvider
+
+  App\Model\CountryDataProvider:
+    arguments:
+      $binCountryCode: \App\Model\BinLookupService
+
   App\:
     resource: '../src/'
     exclude:
       - '../src/DependencyInjection/'
       - '../src/Entity/'
       - '../src/Kernel.php'
+
+  App\Model\RateProvider:
+    arguments:
+      $accessToken: 'FscmlA2e1r4DDxAP5czjC8616N2L9UqK'
