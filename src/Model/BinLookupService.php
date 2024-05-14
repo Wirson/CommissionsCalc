@@ -1,7 +1,6 @@
 <?php
-
 /**
- * @copyright Copyright (c) Mateusz Wira (mwira@gmail.com)
+ * @copyright Copyright (c) Mateusz Wira (m.wirson@gmail.com)
  */
 
 declare(strict_types=1);
@@ -12,6 +11,7 @@ class BinLookupService implements \App\Model\Contract\BinCountryCode
 {
     public function __construct(
         private readonly \Symfony\Contracts\HttpClient\HttpClientInterface $httpClient,
+        private readonly string $binLookupUrl,
     ) {
 
     }
@@ -24,7 +24,7 @@ class BinLookupService implements \App\Model\Contract\BinCountryCode
 
     private function getBinData(string $binNumber): array
     {
-        $response = $this->httpClient->request('GET', "https://lookup.binlist.net/$binNumber");
+        $response = $this->httpClient->request('GET', $this->binLookupUrl . $binNumber);
         $result = $response->toArray();
         if ($response->getStatusCode() !== 200) {
             throw new \Symfony\Component\HttpClient\Exception\TransportException('Bin not found');

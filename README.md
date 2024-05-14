@@ -1,3 +1,4 @@
 - install app by running `composer install`
-- place source file in the app root folder 
+- place source file in the app root folder
+- update `.env` `RATES_API_KEY` value with your `https://apilayer.com` api key
 - to run calculations command, use `php bin/console app:calculate ${input_filename}`

@@ -1,7 +1,6 @@
 <?php
-
 /**
- * @copyright Copyright (c) Mateusz Wira (mwira@gmail.com)
+ * @copyright Copyright (c) Mateusz Wira (m.wirson@gmail.com)
  */
 
 declare(strict_types=1);
@@ -10,7 +9,7 @@ namespace App\Model;
 
 class CountryDataProvider
 {
-    private const EU_COUNTRY_CODES = [
+    private const array EU_COUNTRY_CODES = [
         'AT',
         'BE',
         'BG',

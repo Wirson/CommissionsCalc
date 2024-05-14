@@ -20,4 +20,9 @@ services:
 
   App\Model\RateProvider:
     arguments:
-      $accessToken: 'FscmlA2e1r4DDxAP5czjC8616N2L9UqK'
+      $accessToken: '%env(string:RATES_API_KEY)%'
+      $apilayerUrl: '%env(string:APILAYER_URL)%'
+
+  App\Model\BinLookupService:
+    arguments:
+      $binLookupUrl: '%env(string:BIN_LOOKUP_URL)%'

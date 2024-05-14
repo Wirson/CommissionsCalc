@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright Copyright (c) Mateusz Wira (mwira@gmail.com)
+ * @copyright Copyright (c) Mateusz Wira (m.wirson@gmail.com)
  */
 
 declare(strict_types=1);
@@ -41,7 +41,7 @@ class CalculateCommissions extends \Symfony\Component\Console\Command\Command
         foreach ($serializedTransactionsData as $serializedTransaction) {
             $transaction = json_decode($serializedTransaction, true);
             try {
-                $output->writeln($this->commissionCalculator->calculate($transaction));
+                $output->writeln((string)$this->commissionCalculator->calculate($transaction));
             } catch (\Exception $exception) {
                 $output->writeln($exception->getMessage());
             }

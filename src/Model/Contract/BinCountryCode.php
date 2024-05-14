@@ -1,7 +1,6 @@
 <?php
-
 /**
- * @copyright Copyright (c) Mateusz Wira (mwira@gmail.com)
+ * @copyright Copyright (c) Mateusz Wira (m.wirson@gmail.com)
  */
 
 namespace App\Model\Contract;

@@ -1,7 +1,6 @@
 <?php
-
 /**
- * @copyright Copyright (c) Mateusz Wira (mwira@gmail.com)
+ * @copyright Copyright (c) Mateusz Wira (m.wirson@gmail.com)
  */
 
 declare(strict_types=1);
@@ -15,6 +14,7 @@ class RateProvider implements \App\Model\Contract\ExchangeRates
     public function __construct(
         private readonly \Symfony\Contracts\HttpClient\HttpClientInterface $httpClient,
         private readonly string $accessToken,
+        private readonly string $apilayerUrl,
     ) {
 
     }
@@ -27,8 +27,11 @@ class RateProvider implements \App\Model\Contract\ExchangeRates
     private function getRates()
     {
         if (!$this->rawRatesResult) {
-            $response = $this->httpClient
-                ->request('GET', 'https://api.exchangeratesapi.io/latest', ['headers' => ['access_key' => $this->accessToken]]);
+            $response = $this->httpClient->request(
+                'GET',
+                $this->apilayerUrl,
+                ['headers' => ['apikey' => $this->accessToken]]
+            );
 
             $result = $response->toArray();
 
